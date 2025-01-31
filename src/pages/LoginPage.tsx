@@ -1,9 +1,10 @@
 import {FC} from 'react';
+import LoginForm from "../components/loginForm/LoginForm.tsx";
 
 const LoginPage:FC = () => {
     return (
         <div>
-            Login Page
+            <LoginForm/>
         </div>
     );
 };

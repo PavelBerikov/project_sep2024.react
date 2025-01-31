@@ -4,6 +4,11 @@ import HomePage from "../pages/HomePage.tsx";
 import LoginPage from "../pages/LoginPage.tsx";
 import RecipesPage from "../pages/RecipesPage.tsx";
 import UsersPage from "../pages/UsersPage.tsx";
+import UserDetailsPage from "../pages/UserDetailsPage.tsx";
+import RecipesDetailsPage from "../pages/RecipesDetailsPage.tsx";
+import RecipeSearchPage from "../pages/RecipeSearchPage.tsx";
+import UserSearchPage from "../pages/UserSearchPage.tsx";
+import SearchByTagPage from "../pages/SearchByTagPage.tsx";
 
 
 
@@ -13,19 +18,11 @@ export const router= createBrowserRouter([
             {path: 'login', element: <LoginPage/>},
         ]},
     {path: 'recipes', element: <RecipesPage/>},
-    {path: 'users', element: <UsersPage/>}
-
-
-   /* {path: '/', element: <MainLayout/>},
-    {path: '/login', element: <LoginPage/>},
-    {path:'/auth', element: <AuthHomePage/>, children:[
-            {path: 'recipes', element: <RecipesPage/>},
-            {path: 'users', element: <UsersPage/>},
-            {path:'recipes/search', element: <SearchPage/>}
-        ]},
+    {path: 'users', element: <UsersPage/>},
     {path:'users/details/:id', element: <UserDetailsPage/>},
     {path:'recipes/details/:id', element: <RecipesDetailsPage/>},
-    {path: '/recipe/searchByTag/:tag', element: <SearchByTagPage/>}*/
-
+    {path:'recipes/search', element: <RecipeSearchPage/>},
+    {path: 'users/search', element: <UserSearchPage/>},
+    {path: '/recipe/searchByTag/:tag', element: <SearchByTagPage/>}
 ]);
 
