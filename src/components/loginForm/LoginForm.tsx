@@ -13,11 +13,13 @@ const LoginForm = () => {
         navigate('/')
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" placeholder='username' {...register('username')} />
-            <input type="text" placeholder='password' {...register('password')} />
-            <button>Login</button>
-        </form>
+        <div style={{background: "royalblue", width: "400px", height: "400px", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input type="text" placeholder='username' {...register('username')} />
+                <input type="text" placeholder='password' {...register('password')} />
+                <button>Login</button>
+            </form>
+        </div>
     );
 };
 

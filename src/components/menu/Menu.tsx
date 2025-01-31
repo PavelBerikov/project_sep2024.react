@@ -18,7 +18,7 @@ const Menu:FC = () => {
 
             {
                 loginUser &&
-                <div>
+                <div style={{margin: '0'}} className={'menu'}>
                     <ul>
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/users'}>Users</Link></li>

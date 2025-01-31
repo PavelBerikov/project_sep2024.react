@@ -1,6 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout.tsx";
-import HomePage from "../pages/HomePage.tsx";
 import LoginPage from "../pages/LoginPage.tsx";
 import RecipesPage from "../pages/RecipesPage.tsx";
 import UsersPage from "../pages/UsersPage.tsx";
@@ -14,7 +13,7 @@ import SearchByTagPage from "../pages/SearchByTagPage.tsx";
 
 export const router= createBrowserRouter([
     {path:'/', element: <MainLayout/>, children: [
-            {index:true,element: <HomePage/>},
+            /*{index:true,element: <HomePage/>},*/
             {path: 'login', element: <LoginPage/>},
         ]},
     {path: 'recipes', element: <RecipesPage/>},
@@ -23,6 +22,6 @@ export const router= createBrowserRouter([
     {path:'recipes/details/:id', element: <RecipesDetailsPage/>},
     {path:'recipes/search', element: <RecipeSearchPage/>},
     {path: 'users/search', element: <UserSearchPage/>},
-    {path: '/recipe/searchByTag/:tag', element: <SearchByTagPage/>}
+    {path: '/recipe/searchByTag/:tag', element: <SearchByTagPage/>},
 ]);
 

@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useAppDispatch} from "../hooks/useAppDispatch.tsx";
 import {filterByTagSliceActions} from "../redux/slices/filterByTagSlice/filterByTagSlice.ts";
 import FilterByTagData from "../components/filterByTag/FilterByTagData.tsx";
+import Menu from "../components/menu/Menu.tsx";
 
 
 const SearchByTagPage:FC = () => {
@@ -14,6 +15,7 @@ const SearchByTagPage:FC = () => {
     }, []);
     return (
         <div>
+            <Menu/>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)'}}>
                 {
                     tags.map((tag, index) => <Link onClick={() => {
