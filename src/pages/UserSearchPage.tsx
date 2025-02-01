@@ -6,6 +6,7 @@ import SearchUserForm from "../components/searchUserForm/SearchUserForm.tsx";
 import User from "../components/user/User.tsx";
 import Menu from "../components/menu/Menu.tsx";
 import backImage from "../assets/back5.jpeg";
+import Pagination from "../components/pagination/Pagination.tsx";
 
 const UserSearchPage:FC = () => {
     const {searchWord} = useAppSelector(state => state.searchSlice);
@@ -31,6 +32,7 @@ const UserSearchPage:FC = () => {
                 user&&
                 <User user={user} key={user.id}/>
             }
+            <Pagination/>
 
         </div>
     );

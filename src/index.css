@@ -110,6 +110,9 @@ button{
   height: 500px;
   border-radius: 20px;
 }
+.userDetails>img{
+  
+}
 .authHome{
   font-size: 20px;
   display: flex;
@@ -134,4 +137,8 @@ button{
   z-index: 10;
   top: 20%;
   left: 35%;
+}
+.avatar{
+  height: 80px;
+  width: 80px;
 }

@@ -6,6 +6,7 @@ import SearchRecipeForm from '../components/searchRecipeForm/SearchRecipeForm.ts
 import Recipe from '../components/recipe/Recipe';
 import Menu from "../components/menu/Menu.tsx";
 import backImage from "../assets/back5.jpeg";
+import Pagination from "../components/pagination/Pagination.tsx";
 
 const RecipeSearchPage:FC = () => {
     const {searchWord} = useAppSelector(state => state.searchSlice);
@@ -31,6 +32,7 @@ const RecipeSearchPage:FC = () => {
                 recipe&&
                 <Recipe recipe={recipe} key={recipe.id}/>
             }
+            <Pagination/>
         </div>
     );
 };

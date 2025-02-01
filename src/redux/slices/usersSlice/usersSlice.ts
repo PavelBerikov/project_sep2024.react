@@ -1,15 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit/react";
 import {IUser} from "../../../interfaces/userInterface.ts";
 import {loadSearchUser, loadUser, loadUsers} from "../../../services/usersService.ts";
+import {IUsersResponse} from "../../../interfaces/usersResponseInterface.ts";
 
 type initialStateType = {
     users: IUser[],
-    user: IUser | null
+    user: IUser | null,
+    response: IUsersResponse | null
 
 }
 const initialState:initialStateType = {
     users: [],
-    user: null
+    user: null,
+    response: null
 }
 
 const getUsers = createAsyncThunk(
@@ -60,6 +63,7 @@ export const usersSlice = createSlice({
         builder.addCase(getUsers.fulfilled, (state, action) => {
             console.log(action.payload)
             state.users = action.payload.users
+            state.response = action.payload
         })
             .addCase(getUser.fulfilled, (state, action) => {
                 state.user = action.payload

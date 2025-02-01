@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import { useAppDispatch } from '../../hooks/useAppDispatch.tsx';
 import { filterByTagSliceActions } from '../../redux/slices/filterByTagSlice/filterByTagSlice.ts';
 import Recipe from "../recipe/Recipe.tsx";
+import Pagination from "../pagination/Pagination.tsx";
 
 const FilterByTagData:FC = () => {
     const {recipes} = useAppSelector(state => state.filterByTagSlice);
@@ -20,6 +21,7 @@ const FilterByTagData:FC = () => {
             {
                 recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id}/>)
             }
+            <Pagination/>
         </div>
     );
 };

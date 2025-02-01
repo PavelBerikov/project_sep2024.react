@@ -1,16 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit/react";
 import { IRecipe } from "../../../interfaces/recipesInterface";
 import {loadRecipeByID, loadRecipes, loadSearchRecipes} from "../../../services/recipesService.ts";
+import {IRecipesResponse} from "../../../interfaces/recipesResponse.ts";
 
 type initialStateType = {
     recipes: IRecipe[],
     recipe: IRecipe | null,
-    id:number | null
+    id:number | null,
+    responseRecipe: IRecipesResponse | null,
 }
 const initialState:initialStateType = {
     recipes: [],
     recipe: null,
-    id:null
+    id:null,
+    responseRecipe: null,
 };
 const getRecipes = createAsyncThunk(
     'authSlice/getRecipes',
@@ -52,9 +55,6 @@ export const recipesSlice = createSlice({
     name: 'recipesSlice',
     initialState: initialState,
     reducers:{
-        setId: (state, action) => {
-            state.id = action.payload
-        },
         resetRecipe: (state) => {
             state.recipe = null;
         }
@@ -62,6 +62,7 @@ export const recipesSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(getRecipes.fulfilled, (state, action) => {
             state.recipes = action.payload.recipes
+            state.responseRecipe = action.payload
         })
             .addCase(getRecipeById.fulfilled, (state    , action) => {
                 state.recipe = action.payload
