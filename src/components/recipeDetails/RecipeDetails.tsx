@@ -3,8 +3,10 @@ import {useAppSelector} from "../../hooks/useAppSelector.tsx";
 import {useAppDispatch} from "../../hooks/useAppDispatch.tsx";
 import {recipesSliceActions} from "../../redux/slices/recipesSlice/recipesSlice.ts";
 import {Link, useParams} from "react-router-dom";
+import Tag from "../tag/Tag.tsx";
 
 const RecipeDetails:FC = () => {
+    const {loginUser} = useAppSelector(state => state.authSlice);
     const {recipe} = useAppSelector(state => state.recipeSlice);
     const params = useParams();
     const dispatch = useAppDispatch();
@@ -17,7 +19,26 @@ const RecipeDetails:FC = () => {
         <div>
             {
                 recipe &&
-                <div>{recipe.name} - <Link to={`/users/details/${recipe.userId}`}>{recipe.userId}</Link></div>
+                <div className={loginUser? 'recipeDetails' : 'recipeDetails blur'}>
+                    <img src={recipe.image} alt={recipe.name}/>
+                   <div style={{background: 'rgba(255, 255, 255, 0.5)', borderRadius: '20px'}}>
+                       <h1>{recipe.name}</h1>
+                       This recipe belongs to the user with ID <Link to={`/users/details/${recipe.userId}`}>{recipe.userId}</Link>
+                       <h3>Ingredients:</h3>
+                       <p>{recipe.ingredients.join(', ')}</p>
+                       <h3>instructions:</h3>
+                       <p>{recipe.instructions.join(' ')}</p>
+                       <b>Prep time</b> - {recipe.prepTimeMinutes} min
+                       <br/>
+                       <b>Cook time</b> - {recipe.cookTimeMinutes}
+                       <div>
+                           <b>Tags:</b>
+                           {
+                               recipe.tags.map((tag, index) => <Tag tag={tag} key={index}/>)
+                           }
+                       </div>
+                   </div>
+                </div>
             }
         </div>
     );

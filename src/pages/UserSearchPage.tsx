@@ -4,6 +4,8 @@ import {useAppDispatch} from "../hooks/useAppDispatch.tsx";
 import {usersSliceActions} from "../redux/slices/usersSlice/usersSlice.ts";
 import SearchUserForm from "../components/searchUserForm/SearchUserForm.tsx";
 import User from "../components/user/User.tsx";
+import Menu from "../components/menu/Menu.tsx";
+import backImage from "../assets/back5.jpeg";
 
 const UserSearchPage:FC = () => {
     const {searchWord} = useAppSelector(state => state.searchSlice);
@@ -18,7 +20,8 @@ const UserSearchPage:FC = () => {
         console.log(users)
     }, [searchWord, dispatch]);
     return (
-        <div>
+        <div className={'backGround'} style={{backgroundImage: `url(${backImage})`}}>
+            <Menu/>
             <SearchUserForm/>
             {
                 !user&&

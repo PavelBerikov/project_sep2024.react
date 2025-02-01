@@ -1,5 +1,13 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
 *{
-  margin: 0 auto ;
+  margin: 0;
   list-style: none;
   text-decoration: none;
 }
@@ -17,16 +25,113 @@
   border-radius: 20px;
   width: 300px;
   height: 300px;
+
 }
 .menu{
   display: flex;
-  justify-content: space-between; /* Раздвигаем элементы по краям */
+  justify-content: space-between;
+
 }
 .menu>ul{
   display: flex;
   gap: 20px;
+  font-size: 30px;
+}
+.menu>ul>li>Link{
+  color: black;
 }
 .menu>img{
   width: 100px;
   height: 100px
+}
+.recipeDetails>img{
+  width: 50vw;
+  height: 80vh;
+  border-radius: 20px;
+  margin: 50px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.recipeDetails{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.recipeCard{
+  width: 40vw;
+  align-items: center;
+  border-radius: 20px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.dancing-script {
+                   font-family: "Dancing Script", serif;
+                   font-optical-sizing: auto;
+                   font-weight: bold;
+                   font-style: normal;
+                 }
+input{
+  width: 300px;
+  height: 30px;
+  border-radius: 10px;
+}
+.loginCard{
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  align-items: center ;
+}
+button{
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+}
+.usersCard{
+  cursor: pointer;
+  width: 25vw;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 10px;
+  display: grid;
+  border-radius: 10px;
+}
+.userDetails{
+  font-size: 20px;
+  display: flex;
+  margin-top: 100px;
+  background: rgba(255, 255, 255, 0.5);
+  width: 600px;
+  height: 500px;
+  border-radius: 20px;
+}
+.authHome{
+  font-size: 20px;
+  display: flex;
+  margin-top: 100px;
+  background: rgba(255, 255, 255, 0.5);
+  width: 600px;
+  height: 500px;
+  border-radius: 20px;
+}
+.backGround{
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginPage{
+  position: fixed;
+  z-index: 10;
+  top: 20%;
+  left: 35%;
 }

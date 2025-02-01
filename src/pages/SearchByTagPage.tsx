@@ -4,6 +4,7 @@ import {useAppDispatch} from "../hooks/useAppDispatch.tsx";
 import {filterByTagSliceActions} from "../redux/slices/filterByTagSlice/filterByTagSlice.ts";
 import FilterByTagData from "../components/filterByTag/FilterByTagData.tsx";
 import Menu from "../components/menu/Menu.tsx";
+import backImage from "../assets/back7.jpeg";
 
 
 const SearchByTagPage:FC = () => {
@@ -14,7 +15,7 @@ const SearchByTagPage:FC = () => {
             .then(value => setTags(value))
     }, []);
     return (
-        <div>
+        <div className={'backGround'} style={{backgroundImage: `url(${backImage})`}}>
             <Menu/>
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(8, 1fr)'}}>
                 {

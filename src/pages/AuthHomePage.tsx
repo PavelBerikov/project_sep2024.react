@@ -1,9 +1,8 @@
 import  {FC} from 'react';
-
+import backImage from '../assets/back.png';
 const AuthHomePage:FC = () => {
     return (
-        <div>
-            Auth home
+        <div className={'backGround'} style={{backgroundImage:`url(${backImage})`}}>
         </div>
     );
 };

@@ -4,8 +4,6 @@ import {useAppDispatch} from "../../hooks/useAppDispatch.tsx";
 import {usersSliceActions} from "../../redux/slices/usersSlice/usersSlice.ts";
 import User from '../user/User.tsx';
 import { useSearchParams } from 'react-router-dom';
-import Pagination from "../pagination/Pagination.tsx";
-import SearchUserForm from "../searchUserForm/SearchUserForm.tsx";
 
 
 const Users:FC = () => {
@@ -17,15 +15,14 @@ const Users:FC = () => {
     const limit = 20;
     useEffect(() => {
         dispatch(usersSliceActions.getUsers({skip, limit}))
-        console.log(users)
     }, [dispatch, page]);
     return (
-        <div>
-            <SearchUserForm/>
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)'}}>
+
             {
                users.map(user => <User key={user.id} user={user}/>)
             }
-            <Pagination/>
+
         </div>
     );
 };

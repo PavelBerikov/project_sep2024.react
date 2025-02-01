@@ -18,8 +18,8 @@ const SearchUserForm:FC = () => {
     return (
         <div>
             <form onSubmit={handleSubmit(foo)}>
-                <input type="text" placeholder={'search'} {...register('value')}/>
-                <button>Go!</button>
+                <input  type="text" placeholder={'search'} {...register('value')}/>
+                <button style={{height: '36px', borderRadius: '10px'}}>Go!</button>
             </form>
         </div>
     );

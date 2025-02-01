@@ -7,6 +7,7 @@ import Recipe from '../recipe/Recipe.tsx';
 import {recipesSliceActions} from "../../redux/slices/recipesSlice/recipesSlice.ts";
 
 const UserDetails:FC = () => {
+    const {loginUser} = useAppSelector(state => state.authSlice);
     const {recipes} = useAppSelector(state => state.recipeSlice);
     const {id} = useParams();
     const {user} = useAppSelector(state => state.usersSlice);
@@ -18,14 +19,19 @@ const UserDetails:FC = () => {
             dispatch(recipesSliceActions.getRecipes({limit:20, skip:0}))
             dispatch(usersSliceActions.getUser(id))
         }
-        console.log(filteredRecipes)
     }, [id, dispatch]);
     return (
-        <div>
+        <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
             {
                 user&&
-                <div>
-                    <div>{user.id} - {user.firstName} {user.lastName}</div>
+                <div className={loginUser? 'userDetails': 'userDetails blur'}>
+                    <div>
+                        <h2>{user.firstName} {user.lastName} {user.maidenName}</h2>
+                        <b>Age - {user.age}, Gender - {user.gender}</b>
+                        <div>{user.email}</div>
+                        <div>Country - {user.address.country}</div>
+                        <div>Phone number : {user.phone}</div>
+                    </div>
                     <img src={user.image} alt={user.firstName}/>
                 </div>
             }

@@ -11,14 +11,16 @@ const Menu:FC = () => {
 
             {
                 !loginUser &&
-                <ul>
-                    <li><Link to={'/login'}>Login</Link></li>
-                </ul>
+                <div className={'menu'}>
+                    <ul className={'dancing-script'}>
+                        <li><Link to={'/login'}>Login</Link></li>
+                    </ul>
+                </div>
             }
 
             {
                 loginUser &&
-                <div style={{margin: '0'}} className={'menu'}>
+                <div className={'menu dancing-script'}>
                     <ul>
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/users'}>Users</Link></li>

@@ -13,11 +13,16 @@ const LoginForm = () => {
         navigate('/')
     }
     return (
-        <div style={{background: "royalblue", width: "400px", height: "400px", display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <div className="loginCard">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" placeholder='username' {...register('username')} />
-                <input type="text" placeholder='password' {...register('password')} />
+                <h3>Username:</h3>
+                <input  type="text" placeholder='username' {...register('username')} />
+                <br/>
+                <h3>Password:</h3>
+                <input  type="text" placeholder='password' {...register('password')} />
+                <br/>
                 <button>Login</button>
+                <h2 className={'dancing-script'} style={{margin: '50px'}}>For access, please log in.</h2>
             </form>
         </div>
     );
