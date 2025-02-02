@@ -11,7 +11,8 @@ import Pagination from "../components/pagination/Pagination.tsx";
 const UserSearchPage:FC = () => {
     const {searchWord} = useAppSelector(state => state.searchSlice);
     const dispatch = useAppDispatch();
-    const {users, user} = useAppSelector(state => state.usersSlice);
+    const {users, user, response} = useAppSelector(state => state.usersSlice);
+    const count = response? response.total - response.skip : 21
     useEffect(() => {
         if (isNaN(Number(searchWord))){
             dispatch(usersSliceActions.getUserBySearch(searchWord))
@@ -32,7 +33,7 @@ const UserSearchPage:FC = () => {
                 user&&
                 <User user={user} key={user.id}/>
             }
-            <Pagination/>
+            <Pagination count={count}/>
 
         </div>
     );

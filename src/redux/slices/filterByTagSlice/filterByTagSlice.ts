@@ -1,21 +1,24 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {IRecipe} from "../../../interfaces/recipesInterface.ts";
 import { loadFilterByTag } from "../../../services/filterByTagService.ts";
+import {IRecipesResponse} from "../../../interfaces/recipesResponse.ts";
 
  type initialStateType = {
      recipes: IRecipe[],
-     tag: string
+     tag: string,
+     response: IRecipesResponse | null
  }
  const initialState:initialStateType = {
      tag:'',
-     recipes: []
+     recipes: [],
+     response: null
  }
  const getFilter = createAsyncThunk(
      'filterByTagSlice/getFilter',
      async (tag:string, thunkAPI) => {
          try {
-             const {recipes} = await loadFilterByTag(tag);
-             return thunkAPI.fulfillWithValue(recipes)
+             const data = await loadFilterByTag(tag);
+             return thunkAPI.fulfillWithValue(data)
          }catch (e) {
              console.log(e);
              return thunkAPI.rejectWithValue('some error')
@@ -32,7 +35,8 @@ export const filterByTagSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(getFilter.fulfilled, (state, action) => {
-            state.recipes = action.payload
+            state.response = action.payload
+            state.recipes = action.payload.recipes
         })
     }
 });

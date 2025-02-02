@@ -11,7 +11,8 @@ import Pagination from "../components/pagination/Pagination.tsx";
 const RecipeSearchPage:FC = () => {
     const {searchWord} = useAppSelector(state => state.searchSlice);
     const dispatch = useAppDispatch();
-    const {recipes, recipe} = useAppSelector(state => state.recipeSlice);
+    const {recipes, recipe, responseRecipe} = useAppSelector(state => state.recipeSlice);
+    const count = responseRecipe? responseRecipe.total : 1
     useEffect(() => {
         if (isNaN(Number(searchWord))){
             dispatch(recipesSliceActions.getRecipeBySearch(searchWord))
@@ -32,7 +33,7 @@ const RecipeSearchPage:FC = () => {
                 recipe&&
                 <Recipe recipe={recipe} key={recipe.id}/>
             }
-            <Pagination/>
+            <Pagination count={count}/>
         </div>
     );
 };

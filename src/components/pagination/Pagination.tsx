@@ -1,13 +1,16 @@
 import {FC, useEffect} from 'react';
 import { useSearchParams } from 'react-router-dom';
-import {useAppSelector} from "../../hooks/useAppSelector.tsx";
 
-const Pagination: FC = () => {
-    const {response} = useAppSelector(state => state.usersSlice);
-    const {responseRecipe} = useAppSelector(state => state.recipeSlice);
+type PaginationProps = {
+    count: number;
+}
+
+const Pagination: FC<PaginationProps> = ({count}) => {
+ /*   const {response} = useAppSelector(state => state.usersSlice);
+    const {responseRecipe} = useAppSelector(state => state.recipeSlice);*/
     const [query, setQuery] = useSearchParams({page: '1', skip:'0'});
-    const count1 = response? response.total - response.skip : 0
-    const count2 = responseRecipe? responseRecipe.total - responseRecipe.skip: 0
+    /*const count1 = response? response.total - response.skip : 0
+    const count2 = responseRecipe? responseRecipe.total - responseRecipe.skip: 0*/
 
     const prev = () => {
         const page = query.get('page');
@@ -33,7 +36,7 @@ const Pagination: FC = () => {
     return (
         <div>
             <button disabled={query.get('page') === '1'} onClick={prev}>Prev</button>
-            <button disabled={count1? count1 < 20: count2 < 20} onClick={next}>Next</button>
+            <button disabled={count < 20}  onClick={next}>Next</button>
         </div>
     );
 };

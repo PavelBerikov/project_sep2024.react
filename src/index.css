@@ -107,11 +107,14 @@ button{
   margin-top: 100px;
   background: rgba(255, 255, 255, 0.5);
   width: 600px;
-  height: 500px;
+  height: 300px;
   border-radius: 20px;
+  justify-content: space-around;
+  align-items: center;
 }
 .userDetails>img{
-  
+    width: 200px;
+  height: 200px;
 }
 .authHome{
   font-size: 20px;

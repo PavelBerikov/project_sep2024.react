@@ -9,6 +9,8 @@ import {useAppSelector} from "../hooks/useAppSelector.tsx";
 
 const UsersPage:FC = () => {
     const {loginUser} = useAppSelector(state => state.authSlice);
+    const {response} = useAppSelector(state => state.usersSlice);
+    const count = response? response.total - response.skip : 21
     return (
         <div className={'backGround'} style={{backgroundImage: `url(${backImage})`}}>
             <Menu/>
@@ -16,7 +18,7 @@ const UsersPage:FC = () => {
                 loginUser&&
                 <SearchUserForm/>}
             <Users/>
-            <Pagination/>
+            <Pagination count={count}/>
         </div>
     );
 };

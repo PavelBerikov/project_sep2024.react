@@ -21,9 +21,10 @@ const RecipeDetails:FC = () => {
                 recipe &&
                 <div className={loginUser? 'recipeDetails' : 'recipeDetails blur'}>
                     <img src={recipe.image} alt={recipe.name}/>
-                   <div style={{background: 'rgba(255, 255, 255, 0.5)', borderRadius: '20px'}}>
+                   <div style={{background: 'rgba(255, 255, 255, 0.5)', borderRadius: '20px', marginRight: '50px'}}>
                        <h1>{recipe.name}</h1>
-                       This recipe belongs to the user with ID <Link to={`/users/details/${recipe.userId}`}>{recipe.userId}</Link>
+                        <Link to={`/users/details/${recipe.userId}`}><b>This recipe belongs to the user with
+                            ID {recipe.userId}</b></Link>
                        <h3>Ingredients:</h3>
                        <p>{recipe.ingredients.join(', ')}</p>
                        <h3>instructions:</h3>

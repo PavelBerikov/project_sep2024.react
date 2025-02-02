@@ -7,9 +7,10 @@ import Recipe from "../recipe/Recipe.tsx";
 import Pagination from "../pagination/Pagination.tsx";
 
 const FilterByTagData:FC = () => {
-    const {recipes} = useAppSelector(state => state.filterByTagSlice);
+    const {recipes, response} = useAppSelector(state => state.filterByTagSlice);
     const params = useParams();
     const dispatch = useAppDispatch();
+    const count = response? response.total - response.skip : 21
     useEffect(() => {
         if (params.tag){
             dispatch(filterByTagSliceActions.getFilter(params.tag))
@@ -21,7 +22,7 @@ const FilterByTagData:FC = () => {
             {
                 recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id}/>)
             }
-            <Pagination/>
+            <Pagination count={count}/>
         </div>
     );
 };
