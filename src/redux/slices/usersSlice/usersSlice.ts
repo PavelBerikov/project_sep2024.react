@@ -61,7 +61,6 @@ export const usersSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(getUsers.fulfilled, (state, action) => {
-            console.log(action.payload)
             state.users = action.payload.users
             state.response = action.payload
         })

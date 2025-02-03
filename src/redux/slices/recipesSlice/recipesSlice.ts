@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit/react";
 import { IRecipe } from "../../../interfaces/recipesInterface";
-import {loadRecipeByID, loadRecipes, loadSearchRecipes} from "../../../services/recipesService.ts";
+import {loadPromoRecipes, loadRecipeByID, loadRecipes, loadSearchRecipes} from "../../../services/recipesService.ts";
 import {IRecipesResponse} from "../../../interfaces/recipesResponse.ts";
 
 type initialStateType = {
@@ -15,8 +15,20 @@ const initialState:initialStateType = {
     id:null,
     responseRecipe: null,
 };
+const getPromoRecipes = createAsyncThunk(
+    'recipes/getPromoRecipes',
+    async ({ limit, skip }: { limit: number; skip: number }, thunkAPI) => {
+        try {
+            const recipes = await loadPromoRecipes(limit, skip)
+            return thunkAPI.fulfillWithValue(recipes)
+        }catch (e){
+            console.log(e)
+            return thunkAPI.rejectWithValue('some error')
+        }
+    }
+)
 const getRecipes = createAsyncThunk(
-    'authSlice/getRecipes',
+    'recipesSlice/getRecipes',
     async ({ limit, skip }: { limit: number; skip: number }, thunkAPI) => {
         try {
             const recipes = await loadRecipes(limit, skip)
@@ -70,9 +82,12 @@ export const recipesSlice = createSlice({
         .addCase(getRecipeBySearch.fulfilled, (state    , action) => {
             state.recipes =  action.payload.recipes
         })
+            .addCase(getPromoRecipes.fulfilled, (state    , action) => {
+                state.recipes = action.payload.recipes
+            })
     }
 });
 
 export const recipesSliceActions = {
-    ...recipesSlice.actions, getRecipes, getRecipeById, getRecipeBySearch
+    ...recipesSlice.actions, getRecipes, getRecipeById, getRecipeBySearch, getPromoRecipes
 }

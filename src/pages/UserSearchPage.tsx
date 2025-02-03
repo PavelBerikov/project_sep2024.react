@@ -19,7 +19,6 @@ const UserSearchPage:FC = () => {
         }else {
             dispatch(usersSliceActions.getUser(searchWord))
         }
-        console.log(users)
     }, [searchWord, dispatch]);
     return (
         <div className={'backGround'} style={{backgroundImage: `url(${backImage})`}}>

@@ -16,3 +16,6 @@ export const loadSearchRecipes = async (value: string):Promise<IRecipesResponse>
     console.log(recipes);
     return recipes;
 }
+export const loadPromoRecipes =async (limit = 20, skip = 0):Promise<IRecipesResponse> => {
+    return  await axiosInstance.get<IRecipesResponse>(`recipes?limit=${limit}&skip=${skip}`).then(response => response.data);
+}
